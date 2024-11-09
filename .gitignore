@@ -1,0 +1,6 @@
+# ログファイル
+!/logs/
+/logs/*
+!/logs/db/
+/logs/db/*
+!/logs/db/.gitkeep

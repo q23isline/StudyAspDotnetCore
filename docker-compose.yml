@@ -1,3 +1,6 @@
+volumes:
+  db-data:
+
 services:
   backend:
     build:
@@ -10,3 +13,23 @@ services:
     tty: true
     volumes:
       - ./backend:/src
+    depends_on:
+      - db
+  db:
+    build:
+      context: .
+      dockerfile: docker/local/mssql/Dockerfile
+    container_name: db
+    user: root
+    ports:
+      - 1433:1433
+    environment:
+      - MSSQL_SA_PASSWORD=Passw0rd
+      - ACCEPT_EULA=Y
+      - MSSQL_LCID=1041
+      - MSSQL_COLLATION=Japanese_CI_AS
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./logs/db:/var/opt/mssql/log
+      - db-data:/var/opt/mssql
+    command: [ "/bin/bash", "-c", "chmod +x /usr/src/app/entrypoint.sh && /usr/src/app/entrypoint.sh" ]
