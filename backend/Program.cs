@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Serilog;
 
 using StudyAspDotnetCore.Models;
 
+[assembly: ApiController]
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
