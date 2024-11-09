@@ -8,6 +8,20 @@
         "dotnet-format"
       ],
       "rollForward": false
+    },
+    "dotnet-ef": {
+      "version": "8.0.10",
+      "commands": [
+        "dotnet-ef"
+      ],
+      "rollForward": false
+    },
+    "dotnet-aspnet-codegenerator": {
+      "version": "8.0.6",
+      "commands": [
+        "dotnet-aspnet-codegenerator"
+      ],
+      "rollForward": false
     }
   }
 }
