@@ -1,0 +1,12 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/local/dotnet/Dockerfile
+    container_name: backend
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./backend:/src
