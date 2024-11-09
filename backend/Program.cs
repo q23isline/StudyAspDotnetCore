@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 using Serilog;
+
+using StudyAspDotnetCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<MyContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("MyContext")
+    )
+);
 
 var app = builder.Build();
 
