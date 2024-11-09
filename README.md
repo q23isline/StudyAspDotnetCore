@@ -47,6 +47,16 @@ docker compose down
 
 <http://localhost:8080/swagger/index.html>
 
+## データベースへの接続
+
+| 項目名                   | 設定値          |
+| ------------------------ | --------------- |
+| サーバー名               | 127.0.0.1       |
+| 認証                     | SQL Server 認証 |
+| ユーザー名               | sa              |
+| パスワード               | Passw0rd        |
+| サーバー証明書を信頼する | ON              |
+
 ## コーディング標準チェック単体実行
 
 ```bash
@@ -61,3 +71,7 @@ docker compose exec backend dotnet format src.sln
 ### ASP.NET Core
 
 backend/Logs
+
+### SQL Server
+
+logs/db
