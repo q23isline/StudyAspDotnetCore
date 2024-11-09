@@ -1,7 +1,23 @@
 volumes:
+  node:
   db-data:
 
 services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/local/node/Dockerfile
+    container_name: frontend
+    ports:
+      - 5173:5173
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/src
+      - ./logs/frontend:/root/.npm/_logs
+      - node:/src/node_modules
+    stdin_open: true
+    tty: true
   backend:
     build:
       context: .
