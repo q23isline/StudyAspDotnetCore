@@ -61,9 +61,9 @@ docker compose down
 
 ```bash
 # コーディング標準チェック実行
-docker compose exec backend dotnet format --verify-no-changes src.sln
+docker compose exec backend dotnet format --verify-no-changes src.sln --exclude Migrations
 # コーディング標準チェック自動整形実行
-docker compose exec backend dotnet format src.sln
+docker compose exec backend dotnet format src.sln --exclude Migrations
 ```
 
 ## ログ出力場所
