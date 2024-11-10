@@ -24,6 +24,7 @@ ASP.NET Core Web API と Vue.js の勉強用リポジトリ
     docker compose up -d
     docker compose exec backend dotnet restore
     docker compose exec backend dotnet tool restore
+    docker compose exec backend dotnet ef database update
     ```
 
 ## 日常的にやること
