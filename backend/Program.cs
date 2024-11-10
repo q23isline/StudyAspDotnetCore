@@ -27,7 +27,21 @@ builder.Services.AddDbContext<MyContext>(options =>
     )
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "LocalCorsPolicy",
+    policy =>
+    {
+        policy.WithMethods("GET", "POST", "PUT", "DELETE").WithOrigins("http://localhost:5173");
+    });
+});
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("LocalCorsPolicy");
+}
 
 using (var scope = app.Services.CreateScope())
 {
