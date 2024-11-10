@@ -27,7 +27,19 @@ builder.Services.AddDbContext<MyContext>(options =>
     )
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CorsPolicy",
+    policy =>
+    {
+        // TODO: ローカル用の設定になっているので、環境変数を読み込んで動的に設定できるようにする
+        policy.WithMethods("GET").WithOrigins("http://localhost:5173");
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 using (var scope = app.Services.CreateScope())
 {
