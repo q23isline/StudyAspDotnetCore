@@ -1,5 +1,17 @@
 # StudyAspDotnetCore
 
+[![LICENSE](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+![releases](https://img.shields.io/github/release/q23isline/StudyAspDotnetCore.svg?logo=github)
+[![GitHub Actions Backend](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dotnet.yml/badge.svg)](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dotnet.yml)
+[![GitHub Actions Frontend](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/nodejs.yml/badge.svg)](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/nodejs.yml)
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=555555&color=007acc&logoColor=007acc)](https://github.dev/q23isline/StudyAspDotnetCore)
+
+[![.NET](https://img.shields.io/static/v1?logo=dotnet&label=.NET&message=v8&labelColor=555555&color=512bd4&logoColor=ffffff)](https://dotnet.microsoft.com/ja-jp/)
+[![SQL Server](https://img.shields.io/static/v1?label=SQL%20Server&message=v2022&labelColor=555555&color=FFFFFF&logoColor=FFFFFF)](https://learn.microsoft.com/ja-jp/sql/sql-server/)
+[![Node.js](https://img.shields.io/static/v1?logo=node.js&label=Node.js&message=v20.15.0&labelColor=555555&color=339933&logoColor=339933)](https://nodejs.org)
+[![npm](https://img.shields.io/static/v1?logo=npm&label=npm&message=v10.7.0&labelColor=555555&color=CB3837&logoColor=CB3837)](https://www.npmjs.com/)
+[![Vue.js](https://img.shields.io/static/v1?logo=vue.js&label=Vue.js&message=v3.5.12&labelColor=555555&color=4FC08D&logoColor=4FC08D)](https://ja.vuejs.org/)
+
 ASP.NET Core Web API と Vue.js の勉強用リポジトリ
 
 ## はじめにやること
@@ -112,6 +124,7 @@ docker compose exec frontend npm run format
 ```bash
 # フロントエンド
 docker compose exec frontend npm run lint
+docker compose exec frontend npm run type-check
 ```
 
 ## ログ出力場所
