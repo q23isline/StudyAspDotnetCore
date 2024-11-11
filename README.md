@@ -14,6 +14,15 @@
 
 ASP.NET Core Web API と Vue.js の勉強用リポジトリ
 
+## 前提
+
+- インストール
+  - [Windows Subsystem for Linux](https://learn.microsoft.com/ja-jp/windows/wsl/)
+  - [Git](https://git-scm.com/)
+  - [Docker Desktop](https://www.docker.com/ja-jp/products/docker-desktop/)
+  - [Visual Studio Code](https://code.visualstudio.com/)
+  - [SQL Server Management Studio](https://learn.microsoft.com/ja-jp/sql/ssms/)
+
 ## はじめにやること
 
 1. ソースダウンロード
