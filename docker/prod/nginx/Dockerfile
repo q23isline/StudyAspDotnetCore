@@ -13,6 +13,8 @@ RUN npm run build-only
 FROM nginx:1.21-alpine AS final
 ENV TZ=Asia/Tokyo
 COPY docker/prod/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/prod/nginx/ssl /etc/nginx/ssl
 COPY --from=node-build /src/dist /var/www/html
 EXPOSE 80
+EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]

@@ -13,3 +13,8 @@
 !/logs/backend/
 /logs/backend/*
 !/logs/backend/.gitkeep
+
+# シークレット
+!/docker/prod/nginx/ssl/
+/docker/prod/nginx/ssl/*
+!/docker/prod/nginx/ssl/*.default
