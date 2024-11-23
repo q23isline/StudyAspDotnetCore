@@ -10,8 +10,6 @@ services:
     container_name: frontend
     ports:
       - 5173:5173
-    environment:
-      - NODE_ENV=development
     volumes:
       - ./frontend:/src
       - ./logs/frontend:/root/.npm/_logs
@@ -41,10 +39,6 @@ services:
       - 1433:1433
     environment:
       - MSSQL_SA_PASSWORD=Passw0rd
-      - ACCEPT_EULA=Y
-      - MSSQL_LCID=1041
-      - MSSQL_COLLATION=Japanese_CI_AS
-      - TZ=Asia/Tokyo
     volumes:
       - ./logs/db:/var/opt/mssql/log
       - db-data:/var/opt/mssql
