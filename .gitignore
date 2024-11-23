@@ -7,3 +7,9 @@
 !/logs/frontend/
 /logs/frontend/*
 !/logs/frontend/.gitkeep
+!/logs/web/
+/logs/web/*
+!/logs/web/.gitkeep
+!/logs/backend/
+/logs/backend/*
+!/logs/backend/.gitkeep

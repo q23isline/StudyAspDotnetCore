@@ -1,0 +1,65 @@
+networks:
+  frontend-prod:
+  backend-prod:
+
+volumes:
+  db-data-prod:
+
+# TODO: 実行ユーザーをそれぞれのコンテナで root から変える
+services:
+  web-prod:
+    build:
+      context: .
+      dockerfile: ./docker/prod/nginx/Dockerfile
+      args:
+        VITE_API_BASE_URL: "/"
+    container_name: web-prod
+    ports:
+      - 80:80
+    volumes:
+      - ./logs/web:/var/log/nginx
+    networks:
+      - frontend-prod
+      - backend-prod
+  backend-prod:
+    build:
+      context: .
+      dockerfile: docker/prod/dotnet/Dockerfile
+      target: final
+    container_name: backend-prod
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs/backend:/var/www/html/Logs
+    networks:
+      - backend-prod
+    depends_on:
+      - db
+  db:
+    build:
+      context: .
+      dockerfile: docker/prod/mssql/Dockerfile
+    container_name: db
+    user: root
+    ports:
+      - 1433:1433
+    environment:
+      - MSSQL_SA_PASSWORD=Passw0rd
+    volumes:
+      - ./logs/db:/var/opt/mssql/log
+      - db-data-prod:/var/opt/mssql
+    command: [ "/bin/bash", "-c", "chmod +x /usr/src/app/entrypoint.sh && /usr/src/app/entrypoint.sh" ]
+    networks:
+      - backend-prod
+  migrator:
+    build:
+      context: .
+      dockerfile: docker/prod/dotnet/Dockerfile
+      target: migration
+    container_name: migrator
+    depends_on:
+      - db
+    networks:
+      - backend-prod
+    profiles:
+      - migrator
