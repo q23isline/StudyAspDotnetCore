@@ -102,6 +102,22 @@ sudo chmod -R ugo+rw ./
 sudo chmod -R 777 backend/bin backend/obj frontend/node_modules
 ```
 
+## VSCode で .cs ファイルを開いたときにアセンブリ参照がある事を確認してくださいエラーが表示される解決方法
+
+1. キャッシュなどクリアする
+
+    ```bash
+    # インストールしたパッケージやビルド結果を削除する
+    sudo rm -rf backend/bin backend/obj
+    # 再インストール
+    docker compose exec backend dotnet restore
+    docker compose exec backend dotnet tool restore
+
+    sudo chmod -R 777 backend/bin backend/obj
+    ```
+
+2. VSCode を閉じて、再度開く
+
 ## データベースへの接続
 
 | 項目名                   | 設定値          |
