@@ -148,12 +148,22 @@ docker compose exec frontend npm run type-check
 
 ## 本番想定でのアプリ立ち上げ
 
-```bash
-cd StudyAspDotnetCore
-docker compose -f docker-compose-prod.yml build --no-cache
-docker compose -f docker-compose-prod.yml --profile migrator up migrator
-docker compose -f docker-compose-prod.yml up -d
-```
+1. 本番想定のアプリ起動準備
+
+    ```bash
+    cp docker/prod/nginx/ssl/server.crt.default docker/prod/nginx/ssl/server.crt
+    cp docker/prod/nginx/ssl/server.csr.default docker/prod/nginx/ssl/server.csr
+    cp docker/prod/nginx/ssl/server.key.default docker/prod/nginx/ssl/server.key
+    ```
+
+2. アプリ立ち上げ
+
+    ```bash
+    cd StudyAspDotnetCore
+    docker compose -f docker-compose-prod.yml build --no-cache
+    docker compose -f docker-compose-prod.yml --profile migrator up migrator
+    docker compose -f docker-compose-prod.yml up -d
+    ```
 
 ### 本番想定での URL
 
