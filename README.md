@@ -141,5 +141,27 @@ docker compose exec frontend npm run type-check
 |サービス|ログ出力場所|
 |---|---|
 |Node.js|logs/frontend|
-|ASP.NET Core|backend/Logs|
+|ASP.NET Core（開発）|backend/Logs|
+|ASP.NET Core（本番）|logs/backend|
 |SQL Server|logs/db|
+|NGINX（本番）|logs/web|
+
+## 本番想定でのアプリ立ち上げ
+
+```bash
+cd StudyAspDotnetCore
+docker compose -f docker-compose-prod.yml build --no-cache
+docker compose -f docker-compose-prod.yml --profile migrator up migrator
+docker compose -f docker-compose-prod.yml up -d
+```
+
+### 本番想定での URL
+
+<http://localhost>
+
+## 本番想定でのアプリ終了
+
+```bash
+docker compose -f docker-compose-prod.yml down
+docker compose -f docker-compose-prod.yml --profile migrator down
+```
