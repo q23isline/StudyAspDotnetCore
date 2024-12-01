@@ -3,8 +3,12 @@ name: NodeJS
 on:
   push:
     branches: [ "develop" ]
+    paths:
+      - "frontend/**"
   pull_request:
     branches: [ "develop" ]
+    paths:
+      - "frontend/**"
 
 jobs:
   build:
