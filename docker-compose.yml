@@ -1,5 +1,7 @@
 volumes:
   node:
+  dotnet-bin:
+  dotnet-obj:
   db-data:
 
 services:
@@ -27,6 +29,8 @@ services:
     tty: true
     volumes:
       - ./backend:/src
+      - dotnet-bin:/src/bin
+      - dotnet-obj:/src/obj
     depends_on:
       - db
   db:
