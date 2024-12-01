@@ -152,6 +152,17 @@ docker compose exec frontend npm run lint
 docker compose exec frontend npm run type-check
 ```
 
+## Dockerfile コード静的解析実行
+
+```bash
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/local/dotnet/Dockerfile
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/local/mssql/Dockerfile
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/local/node/Dockerfile
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/prod/dotnet/Dockerfile
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/prod/mssql/Dockerfile
+docker run --rm -i hadolint/hadolint < $(pwd)/docker/prod/nginx/Dockerfile
+```
+
 ## ログ出力場所
 
 |サービス|ログ出力場所|
