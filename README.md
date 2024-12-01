@@ -119,6 +119,23 @@ sudo chmod -R 777 backend/bin backend/obj frontend/node_modules
 
 2. VSCode を閉じて、再度開く
 
+## VSCode で .vue や .ts ファイルを開いたときにモジュールが読み込めないエラーが表示される解決方法
+
+1. node_modules ディレクトリの中身を Docker コンテナのものに上書きする
+
+    ```bash
+    # インストールしたライブラリを削除する
+    sudo rm -rf frontend/node_modules
+    # 再インストール
+    docker compose exec frontend npm install
+    # コンテナから WSL2 上に持ってくる（VSCode でライブラリを認識できるようにする）
+    sudo docker cp frontend:/src/node_modules $(pwd)/frontend/
+
+    sudo chmod -R 777 frontend/node_modules
+    ```
+
+2. VSCode を閉じて、再度開く
+
 ## データベースへの接続
 
 | 項目名                   | 設定値          |
