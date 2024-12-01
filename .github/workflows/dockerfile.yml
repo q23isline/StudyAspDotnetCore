@@ -4,8 +4,12 @@ name: Lint Dockerfile
 on:
   push:
     branches: [ "develop" ]
+    paths:
+      - "**/Dockerfile"
   pull_request:
     branches: [ "develop" ]
+    paths:
+      - "**/Dockerfile"
 
 jobs:
   linter:
