@@ -1,3 +1,5 @@
+using System.Globalization;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .ReadFrom.Configuration(context.Configuration)
     .ReadFrom.Services(services)
-    .WriteTo.Console()
+    .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
 );
 
 builder.Services.AddControllers();
@@ -46,7 +48,7 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var provider = scope.ServiceProvider;
-    await Seed.Initialize(provider);
+    await Seed.Initialize(provider).ConfigureAwait(false);
 }
 
 // Configure the HTTP request pipeline.
@@ -62,4 +64,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync().ConfigureAwait(false);

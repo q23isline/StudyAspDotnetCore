@@ -7,7 +7,7 @@ public static class Seed
     public static async Task Initialize(IServiceProvider provider)
     {
         using var db = new MyContext(provider.GetRequiredService<DbContextOptions<MyContext>>());
-        if (await db.Profiles.AnyAsync()) { return; }
+        if (await db.Profiles.AnyAsync().ConfigureAwait(false)) { return; }
         db.Profiles.AddRange(
             new Profile
             {
@@ -21,6 +21,6 @@ public static class Seed
                 Remarks = "管理者のプロフィールです。"
             }
         );
-        await db.SaveChangesAsync();
+        await db.SaveChangesAsync().ConfigureAwait(false);
     }
 }

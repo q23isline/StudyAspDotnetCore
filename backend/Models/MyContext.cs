@@ -8,11 +8,15 @@ public class MyContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        ArgumentNullException.ThrowIfNull(optionsBuilder);
+
         optionsBuilder.AddInterceptors(new TimestampInterceptor());
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        ArgumentNullException.ThrowIfNull(modelBuilder);
+
         modelBuilder.Entity<Profile>(entity =>
         {
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");

@@ -11,6 +11,8 @@ namespace src.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            ArgumentNullException.ThrowIfNull(migrationBuilder);
+
             migrationBuilder.CreateTable(
                 name: "Profiles",
                 columns: table => new
@@ -36,6 +38,8 @@ namespace src.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            ArgumentNullException.ThrowIfNull(migrationBuilder);
+
             migrationBuilder.DropTable(
                 name: "Profiles");
         }
