@@ -4,6 +4,7 @@
 ![releases](https://img.shields.io/github/release/q23isline/StudyAspDotnetCore.svg?logo=github)
 [![GitHub Actions Backend](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dotnet.yml/badge.svg)](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dotnet.yml)
 [![GitHub Actions Frontend](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/nodejs.yml/badge.svg)](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/nodejs.yml)
+[![GitHub Actions Dockerfile](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dockerfile.yml/badge.svg)](https://github.com/q23isline/StudyAspDotnetCore/actions/workflows/dockerfile.yml)
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=555555&color=007acc&logoColor=007acc)](https://github.dev/q23isline/StudyAspDotnetCore)
 
 [![.NET](https://img.shields.io/static/v1?logo=dotnet&label=.NET&message=v8&labelColor=555555&color=512bd4&logoColor=ffffff)](https://dotnet.microsoft.com/ja-jp/)
