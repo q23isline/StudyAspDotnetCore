@@ -26,14 +26,14 @@ namespace src.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Profile>>> GetProfiles()
         {
-            return await _context.Profiles.ToListAsync();
+            return await _context.Profiles.ToListAsync().ConfigureAwait(false);
         }
 
         // GET: api/Profiles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Profile>> GetProfile(Guid id)
         {
-            var profile = await _context.Profiles.FindAsync(id);
+            var profile = await _context.Profiles.FindAsync(id).ConfigureAwait(false);
 
             if (profile == null)
             {
@@ -48,6 +48,8 @@ namespace src.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProfile(Guid id, Profile profile)
         {
+            ArgumentNullException.ThrowIfNull(profile);
+
             if (id != profile.Id)
             {
                 return BadRequest();
@@ -57,7 +59,7 @@ namespace src.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(false);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -79,8 +81,10 @@ namespace src.Controllers
         [HttpPost]
         public async Task<ActionResult<Profile>> PostProfile(Profile profile)
         {
+            ArgumentNullException.ThrowIfNull(profile);
+
             _context.Profiles.Add(profile);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return CreatedAtAction("GetProfile", new { id = profile.Id }, profile);
         }
@@ -89,14 +93,14 @@ namespace src.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProfile(Guid id)
         {
-            var profile = await _context.Profiles.FindAsync(id);
+            var profile = await _context.Profiles.FindAsync(id).ConfigureAwait(false);
             if (profile == null)
             {
                 return NotFound();
             }
 
             _context.Profiles.Remove(profile);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return NoContent();
         }

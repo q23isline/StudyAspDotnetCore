@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 namespace StudyAspDotnetCore.Models;
 
+// テーブル名として Profile を利用したいので、 CA1724 エラーは無視する
+#pragma warning disable CA1724
 public partial class Profile : IRecordableTimestamp
 {
     public Guid Id { get; set; } = Guid.NewGuid();
