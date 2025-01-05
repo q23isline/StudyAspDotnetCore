@@ -15,6 +15,9 @@
 
 ASP.NET Core Web API と Vue.js の勉強用リポジトリ
 
+- [バックエンド開発ガイドライン](./backend/README.md)
+- [フロントエンド開発ガイドライン](./frontend/README.md)
+
 ## 前提
 
 - インストール
@@ -26,7 +29,7 @@ ASP.NET Core Web API と Vue.js の勉強用リポジトリ
 
 ## はじめにやること
 
-1. ソースダウンロード
+1. Windows Subsystem for Linux 上でプログラムダウンロード
 
     ```bash
     git clone https://github.com/q23isline/StudyAspDotnetCore.git
@@ -103,39 +106,6 @@ sudo chmod -R ugo+rw ./
 sudo chmod -R 777 backend/bin backend/obj frontend/node_modules
 ```
 
-## VSCode で .cs ファイルを開いたときにアセンブリ参照がある事を確認してくださいエラーが表示される解決方法
-
-1. キャッシュなどクリアする
-
-    ```bash
-    # インストールしたパッケージやビルド結果を削除する
-    sudo rm -rf backend/bin backend/obj
-    # 再インストール
-    docker compose exec backend dotnet restore
-    docker compose exec backend dotnet tool restore
-
-    sudo chmod -R 777 backend/bin backend/obj
-    ```
-
-2. VSCode を閉じて、再度開く
-
-## VSCode で .vue や .ts ファイルを開いたときにモジュールが読み込めないエラーが表示される解決方法
-
-1. node_modules ディレクトリの中身を Docker コンテナのものに上書きする
-
-    ```bash
-    # インストールしたライブラリを削除する
-    sudo rm -rf frontend/node_modules
-    # 再インストール
-    docker compose exec frontend npm install
-    # コンテナから WSL2 上に持ってくる（VSCode でライブラリを認識できるようにする）
-    sudo docker cp frontend:/src/node_modules $(pwd)/frontend/
-
-    sudo chmod -R 777 frontend/node_modules
-    ```
-
-2. VSCode を閉じて、再度開く
-
 ## データベースへの接続
 
 | 項目名                   | 設定値          |
@@ -145,30 +115,6 @@ sudo chmod -R 777 backend/bin backend/obj frontend/node_modules
 | ユーザー名               | sa              |
 | パスワード               | Passw0rd        |
 | サーバー証明書を信頼する | ON              |
-
-## コーディング標準チェック単体実行
-
-```bash
-# バックエンド
-# コーディング標準チェック実行
-docker compose exec backend dotnet format --verify-no-changes src.sln --exclude Migrations
-# コーディング標準チェック自動整形実行
-docker compose exec backend dotnet format src.sln --exclude Migrations
-
-# フロントエンド
-# コーディング標準チェック実行
-docker compose exec frontend npm run format-check
-# コーディング標準チェック自動整形実行
-docker compose exec frontend npm run format
-```
-
-## コード静的解析実行
-
-```bash
-# フロントエンド
-docker compose exec frontend npm run lint
-docker compose exec frontend npm run type-check
-```
 
 ## Dockerfile コード静的解析実行
 
@@ -183,13 +129,13 @@ docker run --rm -i hadolint/hadolint < $(pwd)/docker/prod/nginx/Dockerfile
 
 ## ログ出力場所
 
-|サービス|ログ出力場所|
-|---|---|
-|Node.js|logs/frontend|
-|ASP.NET Core（開発）|backend/Logs|
-|ASP.NET Core（本番）|logs/backend|
-|SQL Server|logs/db|
-|NGINX（本番）|logs/web|
+| サービス             | ログ出力場所  |
+| -------------------- | ------------- |
+| Node.js              | logs/frontend |
+| ASP.NET Core（開発） | backend/Logs  |
+| ASP.NET Core（本番） | logs/backend  |
+| SQL Server           | logs/db       |
+| NGINX（本番）        | logs/web      |
 
 ## 本番想定でのアプリ立ち上げ
 
