@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csdevkit",
+    "rahulsahay.Csharp-ASPNETCore",
+    "adrianwilczynski.asp-net-core-switcher",
+    "ms-mssql.mssql",
+    "PrateekMahendrakar.resxpress",
+    "EditorConfig.EditorConfig"
+  ]
+}
